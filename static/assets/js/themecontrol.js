@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   const themes = document.getElementById("Themes");
-  const natureImages = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
 
   function setParticlesVisible(visible) {
     document.querySelectorAll("canvas.particles-js-canvas-el").forEach((element) => {
@@ -9,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
   window.applyNatureTheme = function () {
-    const image = natureImages[Math.floor(Math.random() * natureImages.length)];
-    document.body.style.backgroundColor = "#111";
-    document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), url("/images/${image}")`;
+    const backgroundNumber = Math.floor(Math.random() * 5) + 1;
+    document.body.style.backgroundColor = "#183c2b";
+    document.body.style.backgroundImage = `url("/images/bg${backgroundNumber}.jpg")`;
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundAttachment = "fixed";
