@@ -1,3 +1,4 @@
+  <script src="/resources/js/popularity.js"></script>
 <head>
   <html lang="en">
   <link rel="icon" type="image/x-icon" href="assets/images/branding/favicon/favicon.png">
@@ -18,6 +19,7 @@
     <a href="/../" class="logo">Interstellar</a>
     <div class="header2-right">
       <a href="photography">Proxy</a>
+      <a href="blank">Blank</a>
       <a href="mathematics">Games</a>
       <a href="ocean">Apps</a>
       <a href="forest">Chatroom</a>
@@ -56,6 +58,7 @@
             <option class="option" value="Midnight">Midnight</option>
             <option class="option" value="Ocean">Ocean</option>
             <option class="option" value="Light">Light</option>
+            <option class="option" value="Nature">Nature</option>
           </select>
         </div>
       </div>
@@ -80,6 +83,18 @@
           <input class="tab-cloaker-form" placeholder="Panic Key" type="text" id="eventKeyInput" value="">
           <input class="tab-cloaker-form" placeholder="Panic Link" type="text" id="linkInput" value="">
           <input class="tab-cloaker-form" type="button" value="Save" onclick="saveEventKey(); redirectToMainDomain();">
+        </div>
+      </div>
+      <div class="card">
+        <div class="container">
+          <div class="title">
+            <h4><b>Most Popular</b></h4>
+          </div>
+          <p>Show the most visited app, game, or site on the home page.</p>
+          <label>
+            <input type="checkbox" id="popular-enabled" checked>
+            Show Most Popular
+          </label>
         </div>
       </div>
       <div class="card">

@@ -147,13 +147,60 @@
         document.exitFullscreen();
       }
     });
-    window.onload = function () {
+    window.onload = async function () {
       let encodedUrl = sessionStorage.getItem("encodedUrl");
-      encodedUrl = "/service/" + encodedUrl;
-      document.querySelector("#iframeId").src = encodedUrl;
+
+      try {
+        if (!encodedUrl) throw new Error("No encoded URL stored");
+
+        let targetUrl = __uv$config.decodeUrl(encodedUrl);
+        if (!/^https?:\/\//i.test(targetUrl)) {
+          throw new Error("Stored URL is invalid");
+        }
+
+if (targetUrl.includes("cryzen.io")) {
+        targetUrl = "https://www.cryzen.io/";
+        }
+
+        encodedUrl = __uv$config.encodeUrl(targetUrl);
+        sessionStorage.setItem("encodedUrl", encodedUrl);
+      } catch (error) {
+        console.warn("Invalid proxy URL, returning home", error);
+        sessionStorage.removeItem("encodedUrl");
+        window.location.replace("./photography");
+        return;
+      }
+
+      if (!("serviceWorker" in navigator)) {
+        window.location.replace("./photography");
+        return;
+      }
+
+      try {
+        const registration = await navigator.serviceWorker.register(new URL("/sw.js", location.origin), {
+          scope: "/",
+        });
+
+        if (!registration.active) {
+          await Promise.race([
+            navigator.serviceWorker.ready,
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error("Service worker startup timed out")), 5000)
+            ),
+          ]);
+        }
+      } catch (error) {
+        console.error("Unable to start the proxy service worker", error);
+        document.body.innerHTML = "<p style=\"color: white; font: 16px sans-serif; padding: 24px;\">The proxy could not start. Return to the proxy page and try again.</p>";
+        window.location.replace("./photography");
+        return;
+      }
+
+      const proxiedUrl = "/service/" + encodedUrl;
+      document.querySelector("#iframeId").src = proxiedUrl;
     };
   </script>
-  <iframe src="" id="iframeId" style="bottom: 0; border: 0" name="Iframe" scrolling="yes" allowfullscreen></iframe>
+  <iframe src="/loading.html" id="iframeId" style="bottom: 0; border: 0" name="Iframe" scrolling="yes" allow="autoplay; gamepad; fullscreen; keyboard" allowfullscreen></iframe>
   
 </body>
 </html>

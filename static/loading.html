@@ -2,9 +2,14 @@
 <html lang="en">
 
 <head>
+  <script src="/assets/js/themecontrol.js"></script>
   <style>
     body {
       background-color: #1c1c1c;
+      background-image: var(--loading-background);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       font-family: 'Roboto', sans-serif;
       margin: 0;
       display: flex;
@@ -88,9 +93,16 @@
   <div id="loader"></div>
   <div class="message animate-bottom">
     <p class="description">
-      Please wait a moment. Our servers may be under high load causing some slowness.<br>If you have any issues, please
-      <a class="discord-link" href="https://discord.gg/gointerstellar" target="_blank">join our Discord server</a>.
+      Loading the page for you... 
+      Our servers may be under high load causing some slowness.
     </p>
   </div>
+  <script>
+    const backgroundIndex = Math.floor(Math.random() * 5) + 1;
+    document.documentElement.style.setProperty(
+      "--loading-background",
+      `url("/images/bg${backgroundIndex}.jpg")`
+    );
+  </script>
 </body>
 </html>

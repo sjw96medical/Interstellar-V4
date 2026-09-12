@@ -7,6 +7,7 @@
     <meta name="description"
         content="From studio portraits to epic alpine landscapes, browse the best photography, retouching and photojournalism today.">
     <title>404 Error - Page not found</title>
+    <script src="/assets/js/themecontrol.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKJQ5QHQTJ"></script>
     <script>
@@ -41,7 +42,7 @@
             justify-content: center;
             height: 100%;
             text-align: center;
-            background-image: url("https://picsum.photos/1920/1080?grayscale");
+            background-image: var(--error-background);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -106,6 +107,13 @@
         }
     </style>
     <script src="assets/js/panic.js"></script>
+    <script>
+        const backgroundIndex = Math.floor(Math.random() * 5) + 1;
+        document.documentElement.style.setProperty(
+            "--error-background",
+            `url("/images/bg${backgroundIndex}.jpg")`
+        );
+    </script>
 </head>
 
 <body>
@@ -117,7 +125,6 @@
             <button onclick="location.href='/';">Go back home</button>
             <button onclick="window.open('https://support.google.com/accounts/answer/32050', '_blank');">How to clear
                 your cache.</button>
-            <button onclick="window.open('https://forms.gle/PmYG2crJGaYCiWmN9', '_blank');">Report this issue</button>
         </div>
     </div>
 </body>

@@ -10,6 +10,7 @@
   <script src="./uv/uv.config.js"></script>
   <script src="resources/js/index.js"></script>
   <script src="resources/js/visit.js"></script>
+    <script src="resources/js/popularity.js"></script>
   <!-- Extra Scripts-->
   <script src="assets/js/panic.js"></script>
   <script src="assets/js/search.js"></script>
@@ -27,6 +28,7 @@
     <a href="/../" class="logo">Interstellar</a>
     <div class="header2-right">
       <a href="photography">Proxy</a>
+      <a href="blank">Blank</a>
       <a href="mathematics">Games</a>
       <a href="ocean">Apps</a>
       <a href="forest">Chatroom</a>
@@ -62,10 +64,25 @@
   <h2> Games shown on this website are the property of their respective owners. </h2>
   <br>
   <br>
+  <div id="cryzenEmbed" style="display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0, 0, 0, 0.85); padding: 70px 2% 2%; box-sizing: border-box;">
+    <button type="button" onclick="closeCryzenEmbed()" aria-label="Close Cryzen.io embed" style="position: absolute; top: 18px; right: 24px; z-index: 1; color: white; background: #222; border: 1px solid #777; border-radius: 4px; padding: 8px 14px; cursor: pointer;">Close</button>
+    <iframe src="https://www.cryzen.io/" width="100%" height="100%" style="border:none; background: #111;" allow="autoplay; gamepad; fullscreen; keyboard" allowfullscreen></iframe>
+  </div>
+  <script>
+    function openCryzenEmbed() {
+      document.getElementById("cryzenEmbed").style.display = "block";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCryzenEmbed() {
+      document.getElementById("cryzenEmbed").style.display = "none";
+      document.body.style.overflow = "";
+    }
+  </script>
   <div class="row">
     <div class="span1">
       <div class="card animals" loading="lazy" style="padding-top: 5px;">
-        <a class="game" onclick="go('https://forms.gle/iZJe5eB6KJeGe4Am8')">
+        <a class="game" href="https://forms.gle/EP3mtcGpYSocRQFy7" target="_blank" rel="noopener noreferrer">
           <img loading="lazy" src="/assets/images/icons/request.webp" style="border-radius: 25px;" />
         </a>
         <p3> Request A Game! </p3>
@@ -75,10 +92,10 @@
   <div class="row">
     <div class="span1">
       <div class="card animals" loading="lazy" style="padding-top: 5px;">
-        <a class="game" onclick="go('https://hgentry.github.io/1/')">
-          <img loading="lazy" src="/assets/images/icons/1.webp" style="border-radius: 25px;" />
+        <a class="game" href="#cryzenEmbed" onclick="openCryzenEmbed(); return false;">
+          <img loading="lazy" src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=314,height=314,fit=cover,f=auto/09b1a45bc919a925f78a8f789f5c1e07/cryzen-io-logo.png" style="border-radius: 25px;" />
         </a>
-        <p3> 1 </p3>
+        <p3> Cryzen.io </p3>
       </div>
     </div>
   </div>

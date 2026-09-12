@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Blank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/images/branding/favicon/favicon.png">
+  <link rel="stylesheet" href="assets/css/settings/main.css">
+  <link rel="stylesheet" href="resources/css/main.css">
+  <link rel="stylesheet" href="assets/css/nav.css">
+  <script src="/assets/js/themecontrol.js"></script>
+</head>
+
+<body>
+  <div class="header2">
+    <br>
+    <a href="/../" class="logo">Interstellar</a>
+    <div class="header2-right">
+      <a href="photography">Proxy</a>
+      <a href="blank">Blank</a>
+      <a href="mathematics">Games</a>
+      <a href="ocean">Apps</a>
+      <a href="forest">Chatroom</a>
+      <a href="settings">Settings</a>
+    </div>
+  </div>
+
+  <main style="padding-top: 180px;">
+    <div class="searchbar" style="text-align: center;">
+      <form id="blankForm">
+        <input id="searchbar" type="text" placeholder="Open a URL in a blank tab" autocomplete="url" required>
+      </form>
+    </div>
+  </main>
+
+  <small style="position: fixed; bottom: 18px; left: 0; right: 0; color: #aaa; text-align: center; font-size: 13px;">
+    Not all websites support about:blank pages,some websites may be broken or refuse to connect.
+  </small>
+
+  <script>
+    const form = document.getElementById("blankForm");
+    const input = document.getElementById("searchbar");
+
+    input.addEventListener("input", () => {
+      input.style.width = input.value === "" ? "25%" : "70%";
+      input.style.height = "60px";
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      let url = input.value.trim();
+      if (!/^https?:\/\//i.test(url)) url = "https://" + url;
+
+      const blankTab = window.open("about:blank", "_blank");
+      if (!blankTab) {
+        alert("Please allow pop-ups for this site.");
+        return;
+      }
+
+      blankTab.document.title = url;
+      blankTab.document.body.style.margin = "0";
+      blankTab.document.body.style.overflow = "hidden";
+
+      const frame = blankTab.document.createElement("iframe");
+      frame.src = url;
+      frame.style.width = "100vw";
+      frame.style.height = "100vh";
+      frame.style.border = "0";
+      frame.allow = "autoplay; gamepad; fullscreen; keyboard";
+      frame.allowFullscreen = true;
+      blankTab.document.body.appendChild(frame);
+    });
+  </script>
+</body>
+
+</html>

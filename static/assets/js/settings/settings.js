@@ -1,5 +1,13 @@
 document.body.classList.add("classic");
 
+const popularEnabled = document.getElementById("popular-enabled");
+if (popularEnabled) {
+	popularEnabled.checked = localStorage.getItem("interstellarPopularEnabled") !== "false";
+	popularEnabled.addEventListener("change", function () {
+		localStorage.setItem("interstellarPopularEnabled", String(this.checked));
+	});
+}
+
 
 function blank3(){
     let inFrame
