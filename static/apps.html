@@ -48,10 +48,161 @@
         open: "direct",
       },
       {
+        name: "Amazon",
+        url: "https://amazon.com/",
+        icon: "/assets/images/icons/apps/amazon.png",
+      },
+      {
+        name: "Chess.com",
+        url: "https://chess.com",
+        icon: "/assets/images/icons/chess.png",
+      },
+      {
+        name: "ChatGPT Clone",
+        url: "http://chat.shuttle.rip/",
+        icon: "/assets/images/icons/chatgpt.png",
+      },
+      {
+        name: "Cool Math Games",
+        url: "https://www.coolmathgames.com/",
+        icon: "/assets/images/icons/apps/coolmath.png",
+      },
+      {
         name: "Discord",
-        url: "https://discord.com/login",
-        icon: "/images/discord.ico",
+        url: "https://discord.com",
+        icon: "/assets/images/icons/apps/discord.jpg",
+      },
+      {
+        name: "Discord - Login",
+        url: "https://discord.com",
+        icon: "/assets/images/icons/apps/discord.jpg",
         open: "direct",
+      },
+      {
+        name: "ESPN",
+        url: "https://www.espn.com/watch/",
+        icon: "/assets/images/icons/apps/espn.webp",
+      },
+      {
+        name: "Fifa Rosters",
+        url: "https://fifarosters.com/",
+        icon: "/assets/images/icons/fifa.png",
+      },
+      {
+        name: "Flix HQ",
+        url: "https://flixhq.to",
+        icon: "/assets/images/icons/apps/flixhq.png",
+      },
+      {
+        name: "Geforce NOW",
+        url: "https://play.geforcenow.com",
+        icon: "/assets/images/icons/apps/geforce-now.png",
+      },
+      {
+        name: "Github",
+        url: "https://github.com/",
+        icon: "/assets/images/icons/apps/github.png",
+      },
+      {
+        name: "HBO Max",
+        url: "https://www.hbomax.com/",
+        icon: "/assets/images/icons/apps/hbo.webp",
+      },
+      {
+        name: "Instagram",
+        url: "https://instagram.com",
+        icon: "/assets/images/icons/apps/instagram.png",
+        alert: "It is currently not possible to add Instagram, The login feature will not work.",
+      },
+      {
+        name: "Messenger",
+        url: "https://messenger.com/",
+        icon: "/assets/images/icons/apps/messenger.png",
+      },
+      {
+        name: "Now.GG - Astroid",
+        url: "https://nowgg.wtf",
+        icon: "/assets/images/icons/now-gg.webp",
+      },
+      {
+        name: "Paramount Plus",
+        url: "https://paramountplus.com",
+        icon: "/assets/images/icons/apps/paramount.png",
+      },
+      {
+        name: "Pinterest",
+        url: "https://pinterest.com",
+        icon: "/assets/images/icons/apps/pinterest.png",
+      },
+      {
+        name: "Pixlr",
+        url: "https://pixlr.com/",
+        icon: "/assets/images/icons/pix.png",
+      },
+      {
+        name: "Poki",
+        url: "https://poki.com",
+        icon: "/assets/images/icons/apps/poki.png",
+      },
+      {
+        name: "Reddit",
+        url: "https://reddit.com",
+        icon: "/assets/images/icons/apps/reddit.png",
+      },
+      {
+        name: "Soundcloud",
+        url: "https://soundcloud.com",
+        icon: "/assets/images/icons/apps/soundcloud.jpg",
+      },
+      {
+        name: "Spotify",
+        url: "https://open.spotify.com",
+        icon: "/assets/images/icons/apps/spotify.png",
+      },
+      {
+        name: "Telegram",
+        url: "https://web.telegram.org/",
+        icon: "/assets/images/icons/apps/telegram.png",
+      },
+      {
+        name: "Tiktok",
+        url: "https://tiktok.com",
+        icon: "/assets/images/icons/apps/tiktok.png",
+      },
+      {
+        name: "Tumblr",
+        url: "https://tumblr.com/",
+        icon: "/assets/images/icons/apps/tumblr.png",
+      },
+      {
+        name: "Twitch",
+        url: "https://twitch.tv",
+        icon: "/assets/images/icons/apps/twitch-tv.png",
+      },
+      {
+        name: "Twitter",
+        url: "https://twitter.com",
+        icon: "/assets/images/icons/apps/twitter.png",
+      },
+      {
+        name: "VS Code",
+        url: "https://vscode.dev",
+        icon: "/assets/images/icons/apps/vscode.png",
+      },
+      {
+        name: "Y8 Games",
+        url: "https://y8.com/",
+        icon: "/assets/images/icons/apps/y8.png",
+      },
+      {
+        name: "YouTube",
+        url: "https://youtube.com",
+        icon: "/assets/images/icons/apps/yt.png",
+      },
+      {
+        name: "Whatsapp",
+        url: "https://web.whatsapp.com/",
+        icon: "/assets/images/icons/apps/whatsapp.png",
       },
     ];
     const appList = document.getElementById("app-list");
@@ -72,9 +223,13 @@
           </button>
         `;
         card.querySelector("button").addEventListener("click", () => {
+          if (app.alert) {
+            alert(app.alert);
+            return;
+          }
           window.popularItemName = app.name;
           window.popularItemCategory = "App";
-          (app.open === "direct" ? visit : go)(app.url);
+          go(app.url);
         });
         appList.appendChild(card);
       });
